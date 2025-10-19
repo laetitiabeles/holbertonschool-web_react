@@ -6,23 +6,19 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
-    clean: true,
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader'], // support CSS
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset/resource', // gestion des images
         generator: {
           filename: 'images/[name][ext]',
         },
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
             loader: 'image-webpack-loader',
@@ -34,11 +30,10 @@ module.exports = {
             },
           },
         ],
-        enforce: 'pre',
       },
     ],
   },
   performance: {
-    hints: false,
+    hints: false, // supprime le warning "asset size limit"
   },
 };
