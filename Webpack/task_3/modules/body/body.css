@@ -1,0 +1,9 @@
+main {
+    padding: 20px;
+  }
+
+  #count {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+  }
