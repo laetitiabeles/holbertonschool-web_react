@@ -16,7 +16,7 @@ function App() {
       </div>
 
       <div className="App-footer">
-        <p>Copyright {currentYear} - Holberton School</p>
+        <p>Copyright {currentYear} - holberton School</p>
       </div>
     </>
   );
