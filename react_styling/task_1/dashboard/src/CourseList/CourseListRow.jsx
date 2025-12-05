@@ -4,33 +4,30 @@ function CourseListRow({ isHeader = false, textFirstCell = '', textSecondCell = 
   const headerBg = 'var(--color-table-header)';
   const rowBg = 'var(--color-table-rows)';
 
-  const cellStyle = {
-    backgroundColor: isHeader ? headerBg : rowBg,
-    opacity: isHeader ? 0.66 : 0.45,
-  };
-
-  const cellClass = 'border border-gray-400';
+  const baseCellClass = 'border border-gray-400';
+  const headerCellClass = `${baseCellClass} courselist-header-cell`;
+  const rowCellClass = `${baseCellClass} courselist-row-cell`;
 
   if (isHeader) {
     if (textSecondCell === null) {
       return (
         <tr>
-          <th colSpan="2" className={cellClass} style={cellStyle}>{textFirstCell}</th>
+          <th colSpan="2" className={headerCellClass}>{textFirstCell}</th>
         </tr>
       );
     } else {
       return (
         <tr>
-          <th className={cellClass} style={cellStyle}>{textFirstCell}</th>
-          <th className={cellClass} style={cellStyle}>{textSecondCell}</th>
+          <th className={headerCellClass}>{textFirstCell}</th>
+          <th className={headerCellClass}>{textSecondCell}</th>
         </tr>
       );
     }
   } else {
     return (
       <tr>
-        <td className="pl-2 border border-gray-400" style={cellStyle}>{textFirstCell}</td>
-        <td className="pl-2 border border-gray-400" style={cellStyle}>{textSecondCell}</td>
+        <td className={`pl-2 ${rowCellClass}`}>{textFirstCell}</td>
+        <td className={`pl-2 ${rowCellClass}`}>{textSecondCell}</td>
       </tr>
     );
   }
