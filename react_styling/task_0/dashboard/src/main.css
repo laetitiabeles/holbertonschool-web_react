@@ -1,14 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-family: 'Roboto', sans-serif;
+}
 
 @layer base {
-  :root {
-    --font-roboto: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto,
-      'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
-  }
-
-  html, body {
-    font-family: var(--font-roboto);
+  body {
+    font-family: var(--font-family);
   }
 }
