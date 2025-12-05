@@ -22,11 +22,16 @@ class Notifications extends Component {
 
     return (
       <div className="Notifications-container relative">
-        <div className="menuItem text-right p-2.5 cursor-pointer">
-          <p className="m-0 font-bold">Your notifications</p>
-        </div>
+        {!displayDrawer && (
+          <div className="menuItem text-right p-2.5 cursor-pointer">
+            <p className="m-0 font-bold">Your notifications</p>
+          </div>
+        )}
         {displayDrawer && (
           <div className="Notifications border-2 border-dashed border-[var(--main-color)] p-5 relative mt-2.5 w-1/4">
+            <div className="text-right mb-2.5">
+              <p className="m-0 font-bold">Your notifications</p>
+            </div>
             <button
               className="absolute right-2.5 top-2.5 bg-transparent border-none cursor-pointer text-xl"
               aria-label="Close"
