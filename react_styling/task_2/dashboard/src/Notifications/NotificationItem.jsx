@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 class NotificationItem extends PureComponent {
   render() {
     const { type, html, value, markAsRead, id } = this.props;
-    const colorVar = type === 'urgent' ? 'var(--urgent-notification-item)' : 'var(--default-notification-item)';
+    
+    const textColorStyle = {
+      color: type === 'urgent' ? 'var(--urgent-notification-item)' : 'var(--default-notification-item)',
+    };
     
     if (html) {
       return (
         <li
           data-notification-type={type}
           dangerouslySetInnerHTML={html}
-          className="p-1.5"
-          style={{ color: colorVar }}
+          style={textColorStyle}
           onClick={() => markAsRead(id)}
         />
       );
@@ -21,8 +23,7 @@ class NotificationItem extends PureComponent {
     return (
       <li 
         data-notification-type={type} 
-        className="p-1.5"
-        style={{ color: colorVar }}
+        style={textColorStyle}
         onClick={() => markAsRead(id)}
       >
         {value}

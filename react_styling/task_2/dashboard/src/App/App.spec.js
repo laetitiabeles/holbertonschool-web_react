@@ -16,13 +16,6 @@ describe('App component', () => {
     render(<App />);
   });
 
-  test('should render Login component when isLoggedIn is false', () => {
-    const { container } = render(<App />);
-    const loginDiv = container.querySelector('.App-body');
-    expect(loginDiv).toBeInTheDocument();
-    expect(screen.getByText(/login to access the full dashboard/i)).toBeInTheDocument();
-  });
-
   test('calls logOut and displays alert when ctrl+h is pressed', () => {
     const logOutMock = jest.fn();
     render(<App logOut={logOutMock} />);
@@ -62,5 +55,12 @@ describe('App component', () => {
     
     const newsParagraph = screen.getByText(/holberton school news goes here/i);
     expect(newsParagraph).toBeInTheDocument();
+  });
+
+  test('displays CourseList when isLoggedIn is true', () => {
+    render(<App />);
+    
+    const courseListTable = document.getElementById('CourseList');
+    expect(courseListTable).toBeInTheDocument();
   });
 });

@@ -9,7 +9,6 @@ class Notifications extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    // Only update if the length of notifications has changed
     return nextProps.notifications.length !== this.props.notifications.length;
   }
 
@@ -20,18 +19,20 @@ class Notifications extends Component {
   render() {
     const { displayDrawer, notifications } = this.props;
 
+    const borderStyle = {
+      borderColor: 'var(--main-color)',
+    };
+
     return (
-      <div className="Notifications-container relative">
-        {!displayDrawer && (
-          <div className="menuItem text-right p-2.5 cursor-pointer">
-            <p className="m-0 font-bold">Your notifications</p>
-          </div>
-        )}
+      <div className="Notifications-container absolute top-0 right-0">
+        <div className="menuItem text-right p-2.5 cursor-pointer">
+          <p className="m-0 font-bold">Your notifications</p>
+        </div>
         {displayDrawer && (
-          <div className="Notifications border-2 border-dashed border-[var(--main-color)] p-5 relative mt-2.5 w-1/4">
-            <div className="text-right mb-2.5">
-              <p className="m-0 font-bold">Your notifications</p>
-            </div>
+          <div 
+            className="Notifications border-2 border-dashed p-1.5 relative w-96 bg-white"
+            style={borderStyle}
+          >
             <button
               className="absolute right-2.5 top-2.5 bg-transparent border-none cursor-pointer text-xl"
               aria-label="Close"
@@ -40,11 +41,11 @@ class Notifications extends Component {
               ×
             </button>
             {notifications.length === 0 ? (
-              <p>No new notification for now</p>
+              <p className="m-0">No new notification for now</p>
             ) : (
               <>
-                <p>Here is the list of notifications</p>
-                <ul className="list-inside pl-0 m-0 mt-2.5">
+                <p className="m-0 mb-2.5">Here is the list of notifications</p>
+                <ul className="list-inside p-0 m-0 mt-2.5">
                   {notifications.map((notification) => (
                     <NotificationItem
                       key={notification.id}
